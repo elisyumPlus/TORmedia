@@ -1,0 +1,3481 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TorMedia | Profesyonel Medya & Reklam Hizmetleri</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #e63946;
+            --primary-dark: #c1121f;
+            --secondary: #1d1d2c;
+            --dark: #0a0a0f;
+            --darker: #050508;
+            --card: #12121a;
+            --card-hover: #1a1a26;
+            --border: #2a2a3a;
+            --text: #e8e8f0;
+            --text-muted: #8888a0;
+            --accent: #ff6b35;
+            --gradient: linear-gradient(135deg, #e63946, #ff6b35);
+            --gradient-blue: linear-gradient(135deg, #4361ee, #3a0ca3);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--darker); }
+        ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 4px; }
+
+        /* ============ ICON SYSTEM ============ */
+        .icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .icon svg {
+            width: 100%;
+            height: 100%;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .icon-sm { width: 18px; height: 18px; }
+        .icon-md { width: 24px; height: 24px; }
+        .icon-lg { width: 32px; height: 32px; }
+
+        .service-icon-box {
+            width: 60px;
+            height: 60px;
+            border-radius: 14px;
+            background: rgba(230, 57, 70, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-icon-box svg {
+            width: 28px;
+            height: 28px;
+            fill: none;
+            stroke: var(--primary);
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .package-icon-box {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            background: rgba(230, 57, 70, 0.08);
+            border: 1px solid rgba(230, 57, 70, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .package-icon-box svg {
+            width: 26px;
+            height: 26px;
+            fill: none;
+            stroke: var(--primary);
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .portfolio-icon-box {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--secondary), var(--dark));
+        }
+
+        .portfolio-icon-box svg {
+            width: 56px;
+            height: 56px;
+            fill: none;
+            stroke: rgba(230, 57, 70, 0.4);
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .contact-icon-box {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: rgba(230, 57, 70, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-icon-box svg {
+            width: 20px;
+            height: 20px;
+            fill: none;
+            stroke: var(--primary);
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .modal-icon-box {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(46, 204, 113, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .modal-icon-box svg {
+            width: 36px;
+            height: 36px;
+            fill: none;
+            stroke: #2ecc71;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* ============ NAVBAR ============ */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.4s ease;
+            background: transparent;
+        }
+
+        .navbar.scrolled {
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 0.7rem 5%;
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            text-decoration: none;
+            color: var(--text);
+        }
+
+        .logo span { color: var(--primary); }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover { color: var(--text); }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after { width: 100%; }
+
+        .nav-cta {
+            background: var(--gradient);
+            color: white !important;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600 !important;
+            transition: transform 0.3s, box-shadow 0.3s !important;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(230, 57, 70, 0.4);
+        }
+
+        .nav-cta::after { display: none !important; }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 28px;
+            height: 2px;
+            background: var(--text);
+            transition: all 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+        /* ============ HERO ============ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 0 5%;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(230, 57, 70, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 50%, rgba(67, 97, 238, 0.06) 0%, transparent 50%);
+        }
+
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(60px, 60px); }
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 900px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(230, 57, 70, 0.1);
+            border: 1px solid rgba(230, 57, 70, 0.2);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--primary);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease 0.1s both;
+        }
+
+        .hero h1 .highlight {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.3s both;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(230, 57, 70, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--text);
+            background: rgba(255,255,255,0.05);
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-top: 4rem;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+
+        .stat h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ============ SECTIONS ============ */
+        .section { padding: 6rem 5%; }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .section-desc {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        /* ============ PRELOADER ============ */
+        .preloader {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: var(--darker);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+
+        .preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .preloader-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--text);
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: preloaderFadeIn 0.6s ease 0.2s forwards;
+        }
+
+        .preloader-logo span { color: var(--primary); }
+
+        .preloader-bar-track {
+            width: 200px;
+            height: 3px;
+            background: var(--border);
+            border-radius: 3px;
+            overflow: hidden;
+            opacity: 0;
+            animation: preloaderFadeIn 0.6s ease 0.4s forwards;
+        }
+
+        .preloader-bar {
+            height: 100%;
+            width: 0;
+            background: var(--gradient);
+            border-radius: 3px;
+            animation: preloaderProgress 1.8s ease-in-out 0.6s forwards;
+        }
+
+        .preloader-percent {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 1rem;
+            font-weight: 500;
+            opacity: 0;
+            animation: preloaderFadeIn 0.6s ease 0.4s forwards;
+        }
+
+        @keyframes preloaderFadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes preloaderProgress {
+            0% { width: 0; }
+            30% { width: 45%; }
+            60% { width: 75%; }
+            100% { width: 100%; }
+        }
+
+        /* ============ PARTICLES ============ */
+        #particles-canvas {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* ============ SCROLL PROGRESS ============ */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: var(--gradient);
+            z-index: 1001;
+            width: 0;
+            transition: width 0.1s linear;
+        }
+
+        /* ============ MARQUEE ============ */
+        .marquee-section {
+            padding: 3rem 0;
+            overflow: hidden;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            background: var(--darker);
+        }
+
+        .marquee-label {
+            text-align: center;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .marquee-track {
+            display: flex;
+            width: max-content;
+            animation: marqueeScroll 25s linear infinite;
+        }
+
+        .marquee-track:hover {
+            animation-play-state: paused;
+        }
+
+        .marquee-item {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.8rem 2rem;
+            margin: 0 0.5rem;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: var(--card);
+            white-space: nowrap;
+            transition: all 0.3s;
+            flex-shrink: 0;
+        }
+
+        .marquee-item:hover {
+            border-color: rgba(230, 57, 70, 0.3);
+            background: var(--card-hover);
+        }
+
+        .marquee-item-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+
+        .marquee-item span {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+
+        @keyframes marqueeScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* ============ 3D TILT ============ */
+        .tilt-card {
+            transform-style: preserve-3d;
+            will-change: transform;
+        }
+
+        .tilt-card .tilt-inner {
+            transform: translateZ(20px);
+        }
+
+        /* ============ ANIMATIONS ============ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-60px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(60px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.85);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-scale.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+        .stagger-4 { transition-delay: 0.4s; }
+        .stagger-5 { transition-delay: 0.5s; }
+        .stagger-6 { transition-delay: 0.6s; }
+
+        /* Floating animation for hero */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .float-anim {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Line draw animation */
+        @keyframes lineGrow {
+            from { width: 0; }
+            to { width: 60px; }
+        }
+
+        .section-divider {
+            width: 60px;
+            height: 3px;
+            background: var(--gradient);
+            margin: 0 auto 2rem;
+            border-radius: 2px;
+        }
+
+        /* Glow pulse */
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(230, 57, 70, 0.1); }
+            50% { box-shadow: 0 0 40px rgba(230, 57, 70, 0.2); }
+        }
+
+        /* ============ SERVICES ============ */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .service-card:hover {
+            border-color: rgba(230, 57, 70, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .service-card:hover::before { opacity: 1; }
+
+        .service-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .service-features li {
+            padding: 0.4rem 0;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .service-features li .feat-check {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        /* ============ PACKAGES ============ */
+        .packages-section { background: var(--darker); }
+
+        .packages-filter {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--gradient);
+            border-color: transparent;
+            color: white;
+        }
+
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .package-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            position: relative;
+            transition: all 0.4s ease;
+        }
+
+        .package-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+        }
+
+        .package-card.featured {
+            border-color: var(--primary);
+            background: linear-gradient(180deg, rgba(230, 57, 70, 0.05), var(--card));
+            animation: glowPulse 4s ease-in-out infinite;
+        }
+
+        .package-badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: var(--gradient);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .package-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .package-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .package-price { margin-bottom: 2rem; }
+
+        .package-price .amount {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+        }
+
+        .package-price .currency {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            vertical-align: top;
+        }
+
+        .package-price .period {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .package-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .package-features li {
+            padding: 0.6rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+
+        .package-features li .check { color: #2ecc71; font-weight: 700; }
+        .package-features li .cross { color: #555; }
+        .package-features li.disabled { color: #555; }
+
+        .package-btn {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .package-btn:hover {
+            background: var(--gradient);
+            border-color: transparent;
+            box-shadow: 0 8px 30px rgba(230, 57, 70, 0.3);
+        }
+
+        .package-card.featured .package-btn {
+            background: var(--gradient);
+            border-color: transparent;
+        }
+
+        .package-card.featured .package-btn:hover {
+            box-shadow: 0 8px 30px rgba(230, 57, 70, 0.5);
+        }
+
+        /* ============ PORTFOLIO ============ */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .portfolio-card {
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            aspect-ratio: 16/10;
+            background: var(--card);
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: all 0.4s;
+        }
+
+        .portfolio-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 2rem;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .portfolio-card:hover .portfolio-overlay { opacity: 1; }
+
+        .portfolio-overlay h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .portfolio-overlay p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .portfolio-tag {
+            display: inline-block;
+            background: rgba(230, 57, 70, 0.2);
+            color: var(--primary);
+            padding: 0.2rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-top: 0.8rem;
+        }
+
+        /* ============ CONTACT ============ */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .contact-info h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info > p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .contact-details { list-style: none; }
+
+        .contact-details li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+        }
+
+        .contact-details .label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .contact-details .value {
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .contact-form {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2.5rem;
+        }
+
+        .form-group { margin-bottom: 1.2rem; }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            background: var(--secondary);
+            color: var(--text);
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
+            transition: border-color 0.3s;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus { border-color: var(--primary); }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 12px;
+            border: none;
+            background: var(--gradient);
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .form-submit:hover {
+            box-shadow: 0 10px 40px rgba(230, 57, 70, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .form-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* ============ FOOTER ============ */
+        .footer {
+            background: var(--darker);
+            border-top: 1px solid var(--border);
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+        }
+
+        .footer-brand p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin: 1rem 0 1.5rem;
+            line-height: 1.7;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--text-muted);
+            transition: all 0.3s;
+            font-size: 0.8rem;
+            font-weight: 700;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .social-links a:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: rgba(230, 57, 70, 0.1);
+        }
+
+        .footer-col h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 0.7rem; }
+
+        .footer-col ul a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .footer-col ul a:hover { color: var(--text); }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border);
+            padding-top: 2rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* ============ MODAL ============ */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .modal-overlay.active { display: flex; }
+
+        .modal {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            animation: modalIn 0.3s ease;
+        }
+
+        @keyframes modalIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+
+        .modal-close:hover { background: rgba(255,255,255,0.05); }
+
+        .modal h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        /* ============ THEME SWITCHER ============ */
+        .theme-toggle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-muted);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            font-size: 0.85rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: rgba(230, 57, 70, 0.1);
+        }
+
+        /* LIGHT THEME */
+        body.light {
+            --dark: #f5f5f7;
+            --darker: #eaeaef;
+            --card: #ffffff;
+            --card-hover: #f0f0f5;
+            --border: #d5d5dd;
+            --text: #1a1a2e;
+            --text-muted: #6b6b80;
+            --secondary: #eaeaef;
+        }
+
+        body.light .navbar.scrolled {
+            background: rgba(245, 245, 247, 0.95);
+        }
+
+        body.light .preloader {
+            background: #eaeaef;
+        }
+
+        body.light .nav-links {
+            background: #eaeaef;
+        }
+
+        body.light .hero-grid {
+            background-image:
+                linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
+        }
+
+        body.light .marquee-item-icon {
+            border-color: #d5d5dd;
+        }
+
+        body.light .modal {
+            background: #ffffff;
+        }
+
+        body.light .service-icon-box {
+            background: rgba(230, 57, 70, 0.08);
+        }
+
+        body.light .package-icon-box {
+            background: rgba(230, 57, 70, 0.06);
+        }
+
+        /* ============ RECOMMENDED SLIDER ============ */
+        .slider-section {
+            background: var(--darker);
+            overflow: hidden;
+        }
+
+        .slider-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .slider-track {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .slider-slide {
+            min-width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            padding: 2rem 0;
+        }
+
+        .slider-slide-content h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .slider-slide-content h3 .highlight {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .slider-slide-content > p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .slider-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .slider-features li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 0.95rem;
+        }
+
+        .slider-features li .sf-check {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: rgba(46, 204, 113, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2ecc71;
+            font-size: 0.75rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .slider-visual {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slider-visual::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient);
+        }
+
+        .slider-visual .sv-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            background: rgba(230, 57, 70, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .slider-visual .sv-icon svg {
+            width: 36px;
+            height: 36px;
+            fill: none;
+            stroke: var(--primary);
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .slider-visual h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 0.3rem;
+        }
+
+        .slider-visual .sv-period {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .slider-visual .sv-price-note {
+            display: inline-block;
+            background: rgba(230, 57, 70, 0.1);
+            color: var(--primary);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .slider-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .slider-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+        }
+
+        .slider-btn:hover {
+            background: var(--gradient);
+            border-color: transparent;
+            color: white;
+        }
+
+        .slider-dots {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .slider-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            border: none;
+            background: var(--border);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .slider-dot.active {
+            background: var(--primary);
+            width: 28px;
+            border-radius: 5px;
+        }
+
+        /* ============ COMPARISON TABLE ============ */
+        .comparison-table-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow-x: auto;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 800px;
+        }
+
+        .comparison-table thead th {
+            background: var(--card);
+            padding: 1.2rem 1rem;
+            text-align: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-bottom: 2px solid var(--border);
+            position: sticky;
+            top: 0;
+        }
+
+        .comparison-table thead th:first-child {
+            text-align: left;
+            min-width: 180px;
+        }
+
+        .comparison-table thead th.featured-col {
+            background: rgba(230, 57, 70, 0.08);
+            color: var(--primary);
+        }
+
+        .comparison-table tbody td {
+            padding: 0.9rem 1rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+            font-size: 0.88rem;
+        }
+
+        .comparison-table tbody td:first-child {
+            text-align: left;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+
+        .comparison-table tbody tr:hover {
+            background: rgba(255,255,255,0.02);
+        }
+
+        .comparison-table .ct-check {
+            color: #2ecc71;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .comparison-table .ct-cross {
+            color: #444;
+            font-size: 0.9rem;
+        }
+
+        .comparison-table .ct-price {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .comparison-table tbody td.featured-col {
+            background: rgba(230, 57, 70, 0.03);
+        }
+
+        .table-scroll-hint {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        @media (max-width: 850px) {
+            .table-scroll-hint { display: block; }
+        }
+
+        /* ============ FLOATING WHATSAPP ============ */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            z-index: 950;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #25d366;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.5);
+        }
+
+        .whatsapp-float svg {
+            width: 30px;
+            height: 30px;
+            fill: white;
+        }
+
+        .whatsapp-float .wa-pulse {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px solid #25d366;
+            animation: waPulse 2s infinite;
+        }
+
+        @keyframes waPulse {
+            0% { transform: scale(1); opacity: 0.6; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+
+        @media (max-width: 768px) {
+            .whatsapp-float { bottom: 1.5rem; left: 1.5rem; width: 52px; height: 52px; }
+            .whatsapp-float svg { width: 26px; height: 26px; }
+        }
+
+        /* ============ COUNTDOWN ============ */
+        .countdown-section {
+            padding: 3rem 5%;
+            background: linear-gradient(135deg, rgba(230, 57, 70, 0.08), rgba(67, 97, 238, 0.06));
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .countdown-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .countdown-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+
+        .countdown-item {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.2rem 1.5rem;
+            min-width: 90px;
+            text-align: center;
+        }
+
+        .countdown-item .cd-num {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+        }
+
+        .countdown-item .cd-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 0.4rem;
+        }
+
+        /* ============ FAQ ============ */
+        .faq-grid {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            background: var(--card);
+            transition: border-color 0.3s;
+        }
+
+        .faq-item.active {
+            border-color: rgba(230, 57, 70, 0.3);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 1.2rem 1.5rem;
+            background: transparent;
+            border: none;
+            color: var(--text);
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .faq-question:hover { color: var(--primary); }
+
+        .faq-arrow {
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+            color: var(--text-muted);
+            flex-shrink: 0;
+        }
+
+        .faq-item.active .faq-arrow {
+            transform: rotate(180deg);
+            color: var(--primary);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+        }
+
+        .faq-answer-inner {
+            padding: 0 1.5rem 1.2rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* ============ LANGUAGE SWITCHER ============ */
+        .lang-toggle {
+            width: auto;
+            height: 36px;
+            border-radius: 50px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-muted);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            font-size: 0.8rem;
+            font-weight: 700;
+            flex-shrink: 0;
+            padding: 0 0.8rem;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .lang-toggle:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: rgba(230, 57, 70, 0.1);
+        }
+
+        /* ============ LIVE SUPPORT ============ */
+        .live-support {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 900;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0.8rem;
+        }
+
+        .live-support-menu {
+            display: none;
+            flex-direction: column;
+            gap: 0.6rem;
+            align-items: flex-end;
+        }
+
+        .live-support-menu.active {
+            display: flex;
+            animation: fadeInUp 0.3s ease;
+        }
+
+        .live-support-item {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            padding: 0.6rem 1rem 0.6rem 0.6rem;
+            text-decoration: none;
+            color: var(--text);
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s;
+            white-space: nowrap;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .live-support-item:hover {
+            transform: translateX(-5px);
+            border-color: var(--primary);
+        }
+
+        .live-support-item .lsi-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            flex-shrink: 0;
+            color: white;
+        }
+
+        .live-support-main {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--gradient);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 30px rgba(230, 57, 70, 0.4);
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .live-support-main:hover {
+            transform: scale(1.1);
+        }
+
+        .live-support-main .pulse-ring {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+            animation: supportPulse 2s infinite;
+        }
+
+        @keyframes supportPulse {
+            0% { transform: scale(1); opacity: 0.6; }
+            100% { transform: scale(1.6); opacity: 0; }
+        }
+
+        .live-support-main svg {
+            width: 26px;
+            height: 26px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 75%;
+                height: 100vh;
+                background: var(--darker);
+                flex-direction: column;
+                padding: 5rem 2rem;
+                transition: right 0.4s;
+                border-left: 1px solid var(--border);
+            }
+
+            .nav-links.active { right: 0; }
+            .hero-stats { gap: 2rem; }
+            .stat h3 { font-size: 1.8rem; }
+            .contact-wrapper { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+            .portfolio-grid { grid-template-columns: 1fr; }
+            .packages-grid { grid-template-columns: 1fr; }
+            .slider-slide { grid-template-columns: 1fr; text-align: center; }
+            .slider-features li { justify-content: center; }
+            .live-support { bottom: 1.5rem; right: 1.5rem; }
+            .live-support-main { width: 52px; height: 52px; font-size: 1.2rem; }
+        }
+
+        @media (max-width: 480px) {
+            .footer-grid { grid-template-columns: 1fr; }
+            .hero-stats { flex-direction: column; gap: 1.5rem; }
+            .live-support { bottom: 1rem; right: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PRELOADER -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-logo">Tor<span>Media</span></div>
+        <div class="preloader-bar-track">
+            <div class="preloader-bar" id="preloaderBar"></div>
+        </div>
+        <div class="preloader-percent" id="preloaderPercent">0%</div>
+    </div>
+
+    <!-- SCROLL PROGRESS -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <a href="#" class="logo">Tor<span>Media</span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#hizmetler">Hizmetler</a></li>
+            <li><a href="#paketler">Paketler</a></li>
+            <li><a href="#karsilastir">Karsilastir</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#iletisim">Iletisim</a></li>
+            <li><a href="https://wa.me/905551234567?text=Merhaba%2C%20teklif%20almak%20istiyorum." target="_blank" class="nav-cta">Teklif Al</a></li>
+            <li><button class="theme-toggle" id="themeToggle" title="Tema Degistir">DM</button></li>
+            <li><button class="lang-toggle" id="langToggle" title="Dil Degistir">EN</button></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <canvas id="particles-canvas"></canvas>
+        <div class="hero-bg"></div>
+        <div class="hero-grid"></div>
+        <div class="hero-content">
+            <div class="hero-badge">Yeni Sezon 2026 Kampanyasi Aktif</div>
+            <h1>Markanizi <span class="highlight">Dijital Dunyada</span> One Cikarin</h1>
+            <p>Profesyonel reklam cekimleri, sosyal medya yonetimi ve yaratici tasarim hizmetleriyle markanizi bir ust seviyeye tasiyoruz.</p>
+            <div class="hero-buttons">
+                <a href="#paketler" class="btn-primary">Paketleri Incele</a>
+                <a href="#portfolio" class="btn-secondary">Projelerimiz</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat float-anim" style="animation-delay: 0s;">
+                    <h3>250+</h3>
+                    <p>Tamamlanan Proje</p>
+                </div>
+                <div class="stat float-anim" style="animation-delay: 1s;">
+                    <h3>120+</h3>
+                    <p>Mutlu Musteri</p>
+                </div>
+                <div class="stat float-anim" style="animation-delay: 2s;">
+                    <h3>8+</h3>
+                    <p>Yillik Deneyim</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COUNTDOWN -->
+    <section class="countdown-section" id="countdown">
+        <div class="countdown-label" data-tr="Kampanya Sona Eriyor" data-en="Campaign Ending Soon">Kampanya Sona Eriyor</div>
+        <h2 class="countdown-title" data-tr="Yeni Sezon Indiriminden Yararlanin" data-en="Take Advantage of New Season Discount">Yeni Sezon Indiriminden Yararlanin</h2>
+        <div class="countdown-timer" id="countdownTimer">
+            <div class="countdown-item">
+                <div class="cd-num" id="cdDays">00</div>
+                <div class="cd-label" data-tr="Gun" data-en="Days">Gun</div>
+            </div>
+            <div class="countdown-item">
+                <div class="cd-num" id="cdHours">00</div>
+                <div class="cd-label" data-tr="Saat" data-en="Hours">Saat</div>
+            </div>
+            <div class="countdown-item">
+                <div class="cd-num" id="cdMinutes">00</div>
+                <div class="cd-label" data-tr="Dakika" data-en="Minutes">Dakika</div>
+            </div>
+            <div class="countdown-item">
+                <div class="cd-num" id="cdSeconds">00</div>
+                <div class="cd-label" data-tr="Saniye" data-en="Seconds">Saniye</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HIZMETLER -->
+    <section class="section" id="hizmetler">
+        <div class="section-header reveal">
+            <span class="section-tag">Hizmetlerimiz</span>
+            <div class="section-divider"></div>
+            <h2 class="section-title">Yaratici Cozumler Sunuyoruz</h2>
+            <p class="section-desc">Dijital dunyada parlamasi icin ihtiyaciniz olan tum hizmetleri tek cati altinda topladik.</p>
+        </div>
+        <div class="services-grid">
+            <!-- Video -->
+            <div class="service-card reveal stagger-1">
+                <div class="service-icon-box">
+                    <svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                </div>
+                <h3>Video & Reklam Cekimi</h3>
+                <p>Profesyonel ekipmanlar ve yaratici ekibimizle etkileyici reklam filmleri ve tanitim videolari uretiyoruz.</p>
+                <ul class="service-features">
+                    <li><span class="feat-check">+</span> Tanitim Filmi Cekimi</li>
+                    <li><span class="feat-check">+</span> Reklam Filmi Produksiyon</li>
+                    <li><span class="feat-check">+</span> Kurumsal Video</li>
+                    <li><span class="feat-check">+</span> Drone Cekimi</li>
+                </ul>
+            </div>
+            <!-- Sosyal Medya -->
+            <div class="service-card reveal stagger-2">
+                <div class="service-icon-box">
+                    <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                </div>
+                <h3>Sosyal Medya Yonetimi</h3>
+                <p>Tum sosyal medya platformlarinda markanizi aktif ve etkili bir sekilde yonetiyoruz.</p>
+                <ul class="service-features">
+                    <li><span class="feat-check">+</span> Icerik Planlama & Uretimi</li>
+                    <li><span class="feat-check">+</span> Instagram / TikTok / YouTube</li>
+                    <li><span class="feat-check">+</span> Reels & Shorts Uretimi</li>
+                    <li><span class="feat-check">+</span> Raporlama & Analiz</li>
+                </ul>
+            </div>
+            <!-- Logo & Grafik -->
+            <div class="service-card reveal stagger-3">
+                <div class="service-icon-box">
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                </div>
+                <h3>Logo & Grafik Tasarim</h3>
+                <p>Markanizin kimligini yansitan profesyonel logo ve grafik tasarimlari olusturuyoruz.</p>
+                <ul class="service-features">
+                    <li><span class="feat-check">+</span> Logo Tasarimi</li>
+                    <li><span class="feat-check">+</span> Kurumsal Kimlik</li>
+                    <li><span class="feat-check">+</span> Afis & Brosur</li>
+                    <li><span class="feat-check">+</span> Sosyal Medya Tasarimlari</li>
+                </ul>
+            </div>
+            <!-- Web -->
+            <div class="service-card reveal stagger-4">
+                <div class="service-icon-box">
+                    <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="12" y1="2" x2="12" y2="22"/></svg>
+                </div>
+                <h3>Web Sitesi Tasarimi</h3>
+                <p>Modern, hizli ve mobil uyumlu web siteleri tasarlayarak dijital varliginizi guclendiriyoruz.</p>
+                <ul class="service-features">
+                    <li><span class="feat-check">+</span> Kurumsal Web Sitesi</li>
+                    <li><span class="feat-check">+</span> E-Ticaret Cozumleri</li>
+                    <li><span class="feat-check">+</span> SEO Optimizasyonu</li>
+                    <li><span class="feat-check">+</span> Responsive Tasarim</li>
+                </ul>
+            </div>
+            <!-- Fotograf -->
+            <div class="service-card reveal stagger-5">
+                <div class="service-icon-box">
+                    <svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                </div>
+                <h3>Fotograf Cekimi</h3>
+                <p>Profesyonel fotograf cekimleriyle markanizin gorsel dunyasini zenginlestiriyoruz.</p>
+                <ul class="service-features">
+                    <li><span class="feat-check">+</span> Urun Fotografciligi</li>
+                    <li><span class="feat-check">+</span> Mekan Cekimi</li>
+                    <li><span class="feat-check">+</span> Ekip & Portre Cekimi</li>
+                    <li><span class="feat-check">+</span> Etkinlik Fotografciligi</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAKETLER -->
+    <section class="section packages-section" id="paketler">
+        <div class="section-header reveal">
+            <span class="section-tag">Fiyatlandirma</span>
+            <div class="section-divider"></div>
+            <h2 class="section-title">Ihtiyaciniza Uygun Paketi Secin</h2>
+            <p class="section-desc">Her butceye ve ihtiyaca uygun esnek paket seceneklerimizle yaninizdayiz.</p>
+        </div>
+
+        <div class="packages-filter reveal">
+            <button class="filter-btn active" data-filter="all">Tum Paketler</button>
+            <button class="filter-btn" data-filter="video">Video</button>
+            <button class="filter-btn" data-filter="social">Sosyal Medya</button>
+            <button class="filter-btn" data-filter="design">Tasarim</button>
+            <button class="filter-btn" data-filter="web">Web</button>
+            <button class="filter-btn" data-filter="photo">Fotograf</button>
+        </div>
+
+        <div class="packages-grid" id="packagesGrid">
+            <!-- Starter -->
+            <div class="package-card reveal stagger-1" data-category="video">
+                <div class="package-icon-box">
+                    <svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                </div>
+                <h3 class="package-name">Starter Paket</h3>
+                <p class="package-desc">Kucuk isletmeler icin video cekim destegi</p>
+                <div class="package-price">
+                    <span class="currency">TL</span><span class="amount">5.000</span>
+                    <span class="period">/ proje baslangic</span>
+                </div>
+                <ul class="package-features">
+                    <li><span class="check">+</span> 1 gun video cekimi</li>
+                    <li><span class="check">+</span> 1 adet tanitim videosu (30sn)</li>
+                    <li><span class="check">+</span> Temel renk duzeltmesi</li>
+                    <li><span class="check">+</span> 2 revizyon hakki</li>
+                    <li class="disabled"><span class="cross">-</span> Drone cekimi</li>
+                    <li class="disabled"><span class="cross">-</span> Senaryo yazimi</li>
+                </ul>
+                <button class="package-btn" data-pkg="Starter Paket" data-price="TL 5.000">Hemen Basla</button>
+            </div>
+
+            <!-- Basic -->
+            <div class="package-card reveal stagger-2" data-category="social">
+                <div class="package-icon-box">
+                    <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                </div>
+                <h3 class="package-name">Basic Paket</h3>
+                <p class="package-desc">Sosyal medya yonetimiyle dijital varliginizi guclendirin</p>
+                <div class="package-price">
+                    <span class="currency">TL</span><span class="amount">3.500</span>
+                    <span class="period">/ aylik</span>
+                </div>
+                <ul class="package-features">
+                    <li><span class="check">+</span> 2 platform yonetimi</li>
+                    <li><span class="check">+</span> 12 adet icerik/ay</li>
+                    <li><span class="check">+</span> Icerik planlama</li>
+                    <li><span class="check">+</span> Aylik performans raporu</li>
+                    <li class="disabled"><span class="cross">-</span> Reklam yonetimi</li>
+                    <li class="disabled"><span class="cross">-</span> Influencer isbirligi</li>
+                </ul>
+                <button class="package-btn" data-pkg="Basic Paket" data-price="TL 3.500/ay">Hemen Basla</button>
+            </div>
+
+            <!-- Standard (Populer) -->
+            <div class="package-card featured reveal stagger-3" data-category="design">
+                <div class="package-badge">Populer</div>
+                <div class="package-icon-box">
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </div>
+                <h3 class="package-name">Standard Paket</h3>
+                <p class="package-desc">Marka kimligi ve tasarim ihtiyaciniz icin ideal</p>
+                <div class="package-price">
+                    <span class="currency">TL</span><span class="amount">8.000</span>
+                    <span class="period">/ proje</span>
+                </div>
+                <ul class="package-features">
+                    <li><span class="check">+</span> Logo tasarimi (3 konsept)</li>
+                    <li><span class="check">+</span> Kurumsal kimlik kilavuzu</li>
+                    <li><span class="check">+</span> Kartvizit & antetli kagit</li>
+                    <li><span class="check">+</span> Sosyal medya sablonlari (10 adet)</li>
+                    <li><span class="check">+</span> 3 revizyon hakki</li>
+                    <li class="disabled"><span class="cross">-</span> Animasyon logo</li>
+                </ul>
+                <button class="package-btn" data-pkg="Standard Paket" data-price="TL 8.000">Hemen Basla</button>
+            </div>
+
+            <!-- Professional -->
+            <div class="package-card reveal stagger-4" data-category="video,social">
+                <div class="package-icon-box">
+                    <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                </div>
+                <h3 class="package-name">Professional Paket</h3>
+                <p class="package-desc">Kapsamli video ve sosyal medya destegi</p>
+                <div class="package-price">
+                    <span class="currency">TL</span><span class="amount">15.000</span>
+                    <span class="period">/ proje</span>
+                </div>
+                <ul class="package-features">
+                    <li><span class="check">+</span> 3 gun video cekimi</li>
+                    <li><span class="check">+</span> 3 adet reklam filmi</li>
+                    <li><span class="check">+</span> Drone cekimi dahil</li>
+                    <li><span class="check">+</span> 1 ay sosyal medya yonetimi</li>
+                    <li><span class="check">+</span> Profesyonel renk duzeltme</li>
+                    <li><span class="check">+</span> 5 revizyon hakki</li>
+                </ul>
+                <button class="package-btn" data-pkg="Professional Paket" data-price="TL 15.000">Hemen Basla</button>
+            </div>
+
+            <!-- Premium -->
+            <div class="package-card reveal stagger-5" data-category="web">
+                <div class="package-icon-box">
+                    <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                </div>
+                <h3 class="package-name">Premium Paket</h3>
+                <p class="package-desc">Kurumsal web sitesi cozumu</p>
+                <div class="package-price">
+                    <span class="currency">TL</span><span class="amount">20.000</span>
+                    <span class="period">/ site</span>
+                </div>
+                <ul class="package-features">
+                    <li><span class="check">+</span> Ozel web tasarim</li>
+                    <li><span class="check">+</span> 5+ sayfa</li>
+                    <li><span class="check">+</span> SEO optimizasyonu</li>
+                    <li><span class="check">+</span> Responsive tasarim</li>
+                    <li><span class="check">+</span> CMS entegrasyonu</li>
+                    <li><span class="check">+</span> 6 ay bakim destegi</li>
+                </ul>
+                <button class="package-btn" data-pkg="Premium Paket" data-price="TL 20.000">Hemen Basla</button>
+            </div>
+
+            <!-- Fotograf -->
+            <div class="package-card reveal stagger-6" data-category="photo">
+                <div class="package-icon-box">
+                    <svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                </div>
+                <h3 class="package-name">Fotograf Paketi</h3>
+                <p class="package-desc">Profesyonel fotograf cekimi hizmeti</p>
+                <div class="package-price">
+                    <span class="currency">TL</span><span class="amount">4.000</span>
+                    <span class="period">/ cekim</span>
+                </div>
+                <ul class="package-features">
+                    <li><span class="check">+</span> Yarim gun cekim</li>
+                    <li><span class="check">+</span> 50+ retouched fotograf</li>
+                    <li><span class="check">+</span> Urun veya mekan cekimi</li>
+                    <li><span class="check">+</span> Yuksek cozunurluk</li>
+                    <li class="disabled"><span class="cross">-</span> Ekiple cekim</li>
+                    <li class="disabled"><span class="cross">-</span> Video cekimi</li>
+                </ul>
+                <button class="package-btn" data-pkg="Fotograf Paketi" data-price="TL 4.000">Hemen Basla</button>
+            </div>
+
+            <!-- Enterprise -->
+            <div class="package-card reveal stagger-1" data-category="video,social,design,web,photo">
+                <div class="package-icon-box">
+                    <svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><line x1="9" y1="6" x2="15" y2="6"/><line x1="9" y1="10" x2="15" y2="10"/><line x1="9" y1="14" x2="15" y2="14"/><line x1="9" y1="18" x2="12" y2="18"/></svg>
+                </div>
+                <h3 class="package-name">Enterprise Paket</h3>
+                <p class="package-desc">Buyuk markalar icin kapsamli cozum</p>
+                <div class="package-price">
+                    <span class="currency">TL</span><span class="amount">45.000</span>
+                    <span class="period">/ aylik</span>
+                </div>
+                <ul class="package-features">
+                    <li><span class="check">+</span> Sinirsiz video cekimi</li>
+                    <li><span class="check">+</span> 3 platform sosyal medya</li>
+                    <li><span class="check">+</span> Aylik 30+ icerik</li>
+                    <li><span class="check">+</span> Logo & kimlik yenileme</li>
+                    <li><span class="check">+</span> Web site bakim & gelistirme</li>
+                    <li><span class="check">+</span> Dedicated hesap yoneticisi</li>
+                </ul>
+                <button class="package-btn" data-pkg="Enterprise Paket" data-price="TL 45.000/ay">Iletisime Gec</button>
+            </div>
+
+            <!-- E-Ticaret -->
+            <div class="package-card reveal stagger-2" data-category="web,photo">
+                <div class="package-icon-box">
+                    <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                </div>
+                <h3 class="package-name">E-Ticaret Paketi</h3>
+                <p class="package-desc">Online magazanizi kurun, urunlerinizi satisa sunun</p>
+                <div class="package-price">
+                    <span class="currency">TL</span><span class="amount">35.000</span>
+                    <span class="period">/ site</span>
+                </div>
+                <ul class="package-features">
+                    <li><span class="check">+</span> E-ticaret sitesi kurulumu</li>
+                    <li><span class="check">+</span> 50+ urun fotografı</li>
+                    <li><span class="check">+</span> Odeme sistemi entegrasyonu</li>
+                    <li><span class="check">+</span> Stok & siparis yonetimi</li>
+                    <li><span class="check">+</span> SEO & reklam setup</li>
+                    <li><span class="check">+</span> 12 ay teknik destek</li>
+                </ul>
+                <button class="package-btn" data-pkg="E-Ticaret Paketi" data-price="TL 35.000">Hemen Basla</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ONERILEN PAKET SLIDER -->
+    <section class="section slider-section" id="onerilen">
+        <div class="section-header reveal">
+            <span class="section-tag">One Cikan Paket</span>
+            <div class="section-divider"></div>
+            <h2 class="section-title">Bu Ayin Onerisi</h2>
+            <p class="section-desc">Isletmeniz icin en uygun paketleri uzmanlarimiz secti.</p>
+        </div>
+        <div class="slider-container">
+            <div class="slider-track" id="sliderTrack">
+                <!-- Slide 1 -->
+                <div class="slider-slide">
+                    <div class="slider-slide-content reveal-left">
+                        <h3>Icinde <span class="highlight">Video + Sosyal Medya</span> Olan Paket</h3>
+                        <p>Markanizin gorunurlugunu artirmak icin hem profesyonel video cekimleri hem de sosyal medya yonetimi bir arada.</p>
+                        <ul class="slider-features">
+                            <li><span class="sf-check">+</span> 3 gun profesyonel video cekimi</li>
+                            <li><span class="sf-check">+</span> 1 ay sosyal medya yonetimi</li>
+                            <li><span class="sf-check">+</span> Drone cekimi dahil</li>
+                            <li><span class="sf-check">+</span> 3 adet reklam filmi</li>
+                            <li><span class="sf-check">+</span> 5 revizyon hakki</li>
+                        </ul>
+                        <a href="https://wa.me/905551234567?text=Merhaba%2C%20Video%20%2B%20Sosyal%20Medya%20paketini%20inceliyorum.%20Detayl%C4%B1%20g%C3%B6r%C3%BC%C5%9Fmek%20istiyorum." target="_blank" class="btn-primary">Teklif Al</a>
+                    </div>
+                    <div class="slider-visual reveal-right">
+                        <div class="sv-icon">
+                            <svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                        </div>
+                        <h4>Professional</h4>
+                        <p class="sv-period">/ proje</p>
+                        <p style="font-family:'Space Grotesk';font-size:2.5rem;font-weight:800;margin-bottom:1rem;">TL 15.000</p>
+                        <span class="sv-price-note">Kampanyali Fiyat</span>
+                    </div>
+                </div>
+                <!-- Slide 2 -->
+                <div class="slider-slide">
+                    <div class="slider-slide-content">
+                        <h3>Markanizi <span class="highlight">Sifirdan Yaratin</span></h3>
+                        <p>Logo, kurumsal kimlik ve web sitenizi tek pakette halledin. Isinizi dijital dunyada guclu bir sekilde tanitin.</p>
+                        <ul class="slider-features">
+                            <li><span class="sf-check">+</span> Logo tasarimi (5 konsept)</li>
+                            <li><span class="sf-check">+</span> Kurumsal kimlik kilavuzu</li>
+                            <li><span class="sf-check">+</span> 5+ sayfali web sitesi</li>
+                            <li><span class="sf-check">+</span> SEO optimizasyonu</li>
+                            <li><span class="sf-check">+</span> 6 ay teknik destek</li>
+                        </ul>
+                        <a href="https://wa.me/905551234567?text=Merhaba%2C%20Marka%20Paketi%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.%20Detayl%C4%B1%20g%C3%B6r%C3%BC%C5%9Fmek%20istiyorum." target="_blank" class="btn-primary">Teklif Al</a>
+                    </div>
+                    <div class="slider-visual">
+                        <div class="sv-icon">
+                            <svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                        </div>
+                        <h4>Marka Paketi</h4>
+                        <p class="sv-period">/ proje</p>
+                        <p style="font-family:'Space Grotesk';font-size:2.5rem;font-weight:800;margin-bottom:1rem;">TL 25.000</p>
+                        <span class="sv-price-note">En Cok Tercih Edilen</span>
+                    </div>
+                </div>
+                <!-- Slide 3 -->
+                <div class="slider-slide">
+                    <div class="slider-slide-content">
+                        <h3><span class="highlight">E-Ticarete</span> Adim Atin</h3>
+                        <p>Urunlerinizi online'da satisa sunun. Profesyonel urun fotograflari ve tam kapsamli e-ticaret sitesi.</p>
+                        <ul class="slider-features">
+                            <li><span class="sf-check">+</span> E-ticaret sitesi kurulumu</li>
+                            <li><span class="sf-check">+</span> 50+ urun fotografı</li>
+                            <li><span class="sf-check">+</span> Odeme sistemi entegrasyonu</li>
+                            <li><span class="sf-check">+</span> Stok & siparis yonetimi</li>
+                            <li><span class="sf-check">+</span> 12 ay teknik destek</li>
+                        </ul>
+                        <a href="https://wa.me/905551234567?text=Merhaba%2C%20E-Ticaret%20Paketi%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.%20Detayl%C4%B1%20g%C3%B6r%C3%BC%C5%9Fmek%20istiyorum." target="_blank" class="btn-primary">Teklif Al</a>
+                    </div>
+                    <div class="slider-visual">
+                        <div class="sv-icon">
+                            <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                        </div>
+                        <h4>E-Ticaret</h4>
+                        <p class="sv-period">/ site</p>
+                        <p style="font-family:'Space Grotesk';font-size:2.5rem;font-weight:800;margin-bottom:1rem;">TL 35.000</p>
+                        <span class="sv-price-note">Tam Cozum</span>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-nav">
+                <button class="slider-btn" id="sliderPrev">&#8592;</button>
+                <div class="slider-dots" id="sliderDots">
+                    <button class="slider-dot active" data-index="0"></button>
+                    <button class="slider-dot" data-index="1"></button>
+                    <button class="slider-dot" data-index="2"></button>
+                </div>
+                <button class="slider-btn" id="sliderNext">&#8594;</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAKET KARSILASTIRMA -->
+    <section class="section" id="portfolio">
+        <div class="section-header reveal">
+            <span class="section-tag">Portfolio</span>
+            <div class="section-divider"></div>
+            <h2 class="section-title">Son Projelerimiz</h2>
+            <p class="section-desc">Musterilerimiz icin hazirladigimiz basarli projelere goz atin.</p>
+        </div>
+        <div class="portfolio-grid">
+            <div class="portfolio-card reveal stagger-1">
+                <div class="portfolio-icon-box">
+                    <svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                </div>
+                <div class="portfolio-overlay">
+                    <h4>X Markasi Tanitim Filmi</h4>
+                    <p>Kurumsal tanitim videosu produksiyon</p>
+                    <span class="portfolio-tag">Video Cekimi</span>
+                </div>
+            </div>
+            <div class="portfolio-card reveal stagger-2">
+                <div class="portfolio-icon-box">
+                    <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                </div>
+                <div class="portfolio-overlay">
+                    <h4>Y Restoran Sosyal Medya</h4>
+                    <p>3 ay sosyal medya yonetimi</p>
+                    <span class="portfolio-tag">Sosyal Medya</span>
+                </div>
+            </div>
+            <div class="portfolio-card reveal stagger-3">
+                <div class="portfolio-icon-box">
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                </div>
+                <div class="portfolio-overlay">
+                    <h4>Z Tech Marka Kimligi</h4>
+                    <p>Logo ve kurumsal kimlik tasarimi</p>
+                    <span class="portfolio-tag">Tasarim</span>
+                </div>
+            </div>
+            <div class="portfolio-card reveal stagger-4">
+                <div class="portfolio-icon-box">
+                    <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="12" y1="2" x2="12" y2="22"/></svg>
+                </div>
+                <div class="portfolio-overlay">
+                    <h4>W E-Ticaret Sitesi</h4>
+                    <p>Tam kapsamli e-ticaret cozumu</p>
+                    <span class="portfolio-tag">Web Tasarim</span>
+                </div>
+            </div>
+            <div class="portfolio-card reveal stagger-5">
+                <div class="portfolio-icon-box">
+                    <svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                </div>
+                <div class="portfolio-overlay">
+                    <h4>V Kozmetik Urun Cekimi</h4>
+                    <p>200+ urun fotografı</p>
+                    <span class="portfolio-tag">Fotografcilik</span>
+                </div>
+            </div>
+            <div class="portfolio-card reveal stagger-6">
+                <div class="portfolio-icon-box">
+                    <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                </div>
+                <div class="portfolio-overlay">
+                    <h4>U Spor Reklam Kampanyasi</h4>
+                    <p>TV ve dijital reklam kampanyasi</p>
+                    <span class="portfolio-tag">Reklam Filmi</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAKET KARSILASTIRMA -->
+    <section class="section" id="karsilastir">
+        <div class="section-header reveal">
+            <span class="section-tag">Karsilastir</span>
+            <div class="section-divider"></div>
+            <h2 class="section-title">Paketleri Karsilastirin</h2>
+            <p class="section-desc">Hangi paket size uygun? Ozellikleri karsilastirarak en dogru secimi yapin.</p>
+        </div>
+        <div class="comparison-table-wrapper reveal-scale">
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Ozellik</th>
+                        <th>Starter</th>
+                        <th>Basic</th>
+                        <th class="featured-col">Standard</th>
+                        <th>Professional</th>
+                        <th>Premium</th>
+                        <th>Enterprise</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Fiyat</td>
+                        <td><span class="ct-price">TL 5.000</span></td>
+                        <td><span class="ct-price">TL 3.500/ay</span></td>
+                        <td class="featured-col"><span class="ct-price">TL 8.000</span></td>
+                        <td><span class="ct-price">TL 15.000</span></td>
+                        <td><span class="ct-price">TL 20.000</span></td>
+                        <td><span class="ct-price">TL 45.000/ay</span></td>
+                    </tr>
+                    <tr>
+                        <td>Video Cekimi</td>
+                        <td>1 gun</td>
+                        <td><span class="ct-cross">-</span></td>
+                        <td class="featured-col"><span class="ct-cross">-</span></td>
+                        <td>3 gun</td>
+                        <td><span class="ct-cross">-</span></td>
+                        <td>Sinirsiz</td>
+                    </tr>
+                    <tr>
+                        <td>Reklam Filmi</td>
+                        <td>1 adet</td>
+                        <td><span class="ct-cross">-</span></td>
+                        <td class="featured-col"><span class="ct-cross">-</span></td>
+                        <td>3 adet</td>
+                        <td><span class="ct-cross">-</span></td>
+                        <td>Sinirsiz</td>
+                    </tr>
+                    <tr>
+                        <td>Drone Cekimi</td>
+                        <td><span class="ct-cross">-</span></td>
+                        <td><span class="ct-cross">-</span></td>
+                        <td class="featured-col"><span class="ct-cross">-</span></td>
+                        <td><span class="ct-check">+</span></td>
+                        <td><span class="ct-cross">-</span></td>
+                        <td><span class="ct-check">+</span></td>
+                    </tr>
+                    <tr>
+                        <td>Sosyal Medya Yonetimi</td>
+                        <td><span class="ct-cross">-</span></td>
+                        <td>2 platform</td>
+                        <td class="featured-col"><span class="ct-cross">-</span></td>
+                        <td>1 ay</td>
+                        <td><span class="ct-cross">-</span></td>
+                        <td>3 platform</td>
+                    </tr>
+                    <tr>
+                        <td>Icerik Uretimi</td>
+                        <td><span class="ct-cross">-</span></td>
+                        <td>12/ay</td>
+                        <td class="featured-col">10 sablon</td>
+                        <td>Dahil</td>
+                        <td><span class="ct-cross">-</span></td>
+                        <td>30+/ay</td>
+                    </tr>
+                    <tr>
+                        <td>Logo Tasarimi</td>
+                        <td><span class="ct-cross">-</span></td>
+                        <td><span class="ct-cross">-</span></td>
+                        <td class="featured-col">3 konsept</td>
+                        <td><span class="ct-cross">-</span></td>
+                        <td><span class="ct-cross">-</span></td>
+                        <td><span class="ct-check">+</span></td>
+                    </tr>
+                    <tr>
+                        <td>Web Sitesi</td>
+                        <td><span class="ct-cross">-</span></td>
+                        <td><span class="ct-cross">-</span></td>
+                        <td class="featured-col"><span class="ct-cross">-</span></td>
+                        <td><span class="ct-cross">-</span></td>
+                        <td>5+ sayfa</td>
+                        <td><span class="ct-check">+</span></td>
+                    </tr>
+                    <tr>
+                        <td>SEO Optimizasyonu</td>
+                        <td><span class="ct-cross">-</span></td>
+                        <td><span class="ct-cross">-</span></td>
+                        <td class="featured-col"><span class="ct-cross">-</span></td>
+                        <td><span class="ct-cross">-</span></td>
+                        <td><span class="ct-check">+</span></td>
+                        <td><span class="ct-check">+</span></td>
+                    </tr>
+                    <tr>
+                        <td>Fotograf Cekimi</td>
+                        <td><span class="ct-cross">-</span></td>
+                        <td><span class="ct-cross">-</span></td>
+                        <td class="featured-col"><span class="ct-cross">-</span></td>
+                        <td><span class="ct-cross">-</span></td>
+                        <td><span class="ct-cross">-</span></td>
+                        <td><span class="ct-check">+</span></td>
+                    </tr>
+                    <tr>
+                        <td>Revizyon Hakki</td>
+                        <td>2</td>
+                        <td><span class="ct-cross">-</span></td>
+                        <td class="featured-col">3</td>
+                        <td>5</td>
+                        <td>3</td>
+                        <td>Sinirsiz</td>
+                    </tr>
+                    <tr>
+                        <td>Teknik Destek</td>
+                        <td><span class="ct-cross">-</span></td>
+                        <td>Aylik rapor</td>
+                        <td class="featured-col"><span class="ct-cross">-</span></td>
+                        <td>Dahil</td>
+                        <td>6 ay</td>
+                        <td>12 ay</td>
+                    </tr>
+                    <tr>
+                        <td>Hesap Yoneticisi</td>
+                        <td><span class="ct-cross">-</span></td>
+                        <td><span class="ct-cross">-</span></td>
+                        <td class="featured-col"><span class="ct-cross">-</span></td>
+                        <td><span class="ct-cross">-</span></td>
+                        <td><span class="ct-cross">-</span></td>
+                        <td><span class="ct-check">+</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p class="table-scroll-hint">Tabloyu yatay kaydirarak tum paketleri gorebilirsiniz</p>
+    </section>
+
+    <!-- SSS (FAQ) -->
+    <section class="section" id="sss">
+        <div class="section-header reveal">
+            <span class="section-tag" data-tr="SSS" data-en="FAQ">SSS</span>
+            <div class="section-divider"></div>
+            <h2 class="section-title" data-tr="Sik Sorulan Sorular" data-en="Frequently Asked Questions">Sik Sorulan Sorular</h2>
+            <p class="section-desc" data-tr="Merak ettiginiz her seyin cevabi burada." data-en="All the answers you are looking for are here.">Merak ettiginiz her seyin cevabi burada.</p>
+        </div>
+        <div class="faq-grid">
+            <div class="faq-item reveal stagger-1">
+                <button class="faq-question">
+                    <span data-tr="Calisma sureci nasil isliyor?" data-en="How does the working process work?">Calisma sureci nasil isliyor?</span>
+                    <span class="faq-arrow">&#9660;</span>
+                </button>
+                <div class="faq-answer"><div class="faq-answer-inner" data-tr="Ilk gorusmede ihtiyacinizi anliyoruz. Ardindan size uygun paketi birlikte belirliyoruz. Anlasma saglandiktan sonra proje basliyor ve surecin her asamasinda sizinle iletisimde kaliyoruz. Tamamlanan calismalar size sunuluyor ve gerekli revizyonlar yapiliyor." data-en="In our first meeting, we understand your needs. Then we determine the most suitable package for you together. After the agreement, the project starts and we keep in touch with you at every stage. The completed work is presented to you and the necessary revisions are made.">Ilk gorusmede ihtiyacinizi anliyoruz. Ardindan size uygun paketi birlikte belirliyoruz. Anlasma saglandiktan sonra proje basliyor ve surecin her asamasinda sizinle iletisimde kaliyoruz. Tamamlanan calismalar size sunuluyor ve gerekli revizyonlar yapiliyor.</div></div>
+            </div>
+            <div class="faq-item reveal stagger-2">
+                <button class="faq-question">
+                    <span data-tr="Teslimat sureleri ne kadar?" data-en="What are the delivery times?">Teslimat sureleri ne kadar?</span>
+                    <span class="faq-arrow">&#9660;</span>
+                </button>
+                <div class="faq-answer"><div class="faq-answer-inner" data-tr="Video cekimi 3-5 gun, sosyal medya yonetimi aylik periyotlarla, logo tasarimi 5-7 is gunu, web sitesi 2-4 hafta icinde tamamlanmaktadir. Proje karmasikligina gore sureler degisiklik gosterebilir." data-en="Video shooting is completed in 3-5 days, social media management in monthly periods, logo design in 5-7 business days, and website in 2-4 weeks. Times may vary depending on project complexity.">Video cekimi 3-5 gun, sosyal medya yonetimi aylik periyotlarla, logo tasarimi 5-7 is gunu, web sitesi 2-4 hafta icinde tamamlanmaktadir. Proje karmasikligina gore sureler degisiklik gosterebilir.</div></div>
+            </div>
+            <div class="faq-item reveal stagger-3">
+                <button class="faq-question">
+                    <span data-tr="Odeme secenekleri nelerdir?" data-en="What are the payment options?">Odeme secenekleri nelerdir?</span>
+                    <span class="faq-arrow">&#9660;</span>
+                </button>
+                <div class="faq-answer"><div class="faq-answer-inner" data-tr="Banka havalesi, kredi karti ve online odeme ile odeyebilirsiniz. Proje baslangicinda %50 on odeme, kalan %50 ise teslimat esnasinda alinmaktadir. Kurumsal musteriler icin fatura ile odeme secenegi de mevcuttur." data-en="You can pay by bank transfer, credit card and online payment. 50% advance payment is received at the beginning of the project, and the remaining 50% is received at delivery. Invoicing option is also available for corporate customers.">Banka havalesi, kredi karti ve online odeme ile odeyebilirsiniz. Proje baslangicinda %50 on odeme, kalan %50 ise teslimat esnasinda alinmaktadir. Kurumsal musteriler icin fatura ile odeme secenegi de mevcuttur.</div></div>
+            </div>
+            <div class="faq-item reveal stagger-4">
+                <button class="faq-question">
+                    <span data-tr="Revizyon hakki var mi?" data-en="Is there a revision right?">Revizyon hakki var mi?</span>
+                    <span class="faq-arrow">&#9660;</span>
+                </button>
+                <div class="faq-answer"><div class="faq-answer-inner" data-tr="Evet, her paketimizde degisik sayida revizyon hakki bulunmaktadir. Starter paketinde 2, Standard'da 3, Professional'da 5 revizyon hakki vardir. Enterprise paketinde sinirsiz revizyon yapilabilmektedir." data-en="Yes, each of our packages includes a different number of revisions. The Starter package has 2, Standard has 3, Professional has 5 revisions. Unlimited revisions can be made in the Enterprise package.">Evet, her paketimizde degisik sayida revizyon hakki bulunmaktadir. Starter paketinde 2, Standard'da 3, Professional'da 5 revizyon hakki vardir. Enterprise paketinde sinirsiz revizyon yapilabilmektedir.</div></div>
+            </div>
+            <div class="faq-item reveal stagger-5">
+                <button class="faq-question">
+                    <span data-tr="Projemin gizliligi garanti altinda mi?" data-en="Is my project confidentiality guaranteed?">Projemin gizliligi garanti altinda mi?</span>
+                    <span class="faq-arrow">&#9660;</span>
+                </button>
+                <div class="faq-answer"><div class="faq-answer-inner" data-tr="Kesinlikle. Tum projelerimizde gizlilik sozlesmesi imzalanmaktadir. Markaniza ait tum materyaller, taslaklar ve icerikler gizli tutulur. Izniniz olmadan hicbir iceriginiz ucuncu kisilerle paylasilmaz." data-en="Absolutely. A confidentiality agreement is signed for all our projects. All materials, drafts and content belonging to your brand are kept confidential. Your content is not shared with third parties without your permission.">Kesinlikle. Tum projelerimizde gizlilik sozlesmesi imzalanmaktadir. Markaniza ait tum materyaller, taslaklar ve icerikler gizli tutulur. Izniniz olmadan hicbir iceriginiz ucuncu kisilerle paylasilmaz.</div></div>
+            </div>
+            <div class="faq-item reveal stagger-6">
+                <button class="faq-question">
+                    <span data-tr="Diger ajanslardan farkiniz ne?" data-en="What makes you different from other agencies?">Diger ajanslardan farkiniz ne?</span>
+                    <span class="faq-arrow">&#9660;</span>
+                </button>
+                <div class="faq-answer"><div class="faq-answer-inner" data-tr="8 yillik deneyimimiz, 250'den fazla basarili projemiz ve musteri memnuniyeti odakli calisma anlayisimizla fark yaratiyoruz. Her musteriye ozel cozumler uretiyor, projenin her asamasinda yaninizda oluyoruz." data-en="We make a difference with our 8 years of experience, more than 250 successful projects and our customer satisfaction-oriented working approach. We produce special solutions for each customer and are with you at every stage of the project.">8 yillik deneyimimiz, 250'den fazla basarili projemiz ve musteri memnuniyeti odakli calisma anlayisimizla fark yaratiyoruz. Her musteriye ozel cozumler uretiyor, projenin her asamasinda yaninizda oluyoruz.</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MUSTERI LOGOLARI MARQUEE -->
+    <div class="marquee-section">
+        <div class="marquee-label">Calistigimiz Markalar</div>
+        <div class="marquee-track" id="marqueeTrack">
+            <div class="marquee-item"><div class="marquee-item-icon" style="background:rgba(230,57,70,0.1);color:#e63946;">A</div><span>nrus Tech</span></div>
+            <div class="marquee-item"><div class="marquee-item-icon" style="background:rgba(67,97,238,0.1);color:#4361ee;">B</div><span>yuireOS</span></div>
+            <div class="marquee-item"><div class="marquee-item-icon" style="background:rgba(46,204,113,0.1);color:#2ecc71;">C</div><span>Vision GATE</span></div>
+            <div class="marquee-item"><div class="marquee-item-icon" style="background:rgba(255,107,53,0.1);color:#ff6b35;">D</div><span>TOR kepenk</span></div>
+            <div class="marquee-item"><div class="marquee-item-icon" style="background:rgba(155,89,182,0.1);color:#9b59b6;">E</div><span>İtem Aİ</span></div>
+            <div class="marquee-item"><div class="marquee-item-icon" style="background:rgba(241,196,15,0.1);color:#f1c40f;">F</div><span>İtem Takas</span></div>
+            <div class="marquee-item"><div class="marquee-item-icon" style="background:rgba(26,188,156,0.1);color:#1abc9c;">G</div><span>Token Web Media</span></div>
+            <div class="marquee-item"><div class="marquee-item-icon" style="background:rgba(230,57,70,0.1);color:#e63946;">H</div><span>HizliYemek</span></div>
+            <div class="marquee-item"><div class="marquee-item-icon" style="background:rgba(52,152,219,0.1);color:#3498db;">I</div><span>Intellect</span></div>
+            <div class="marquee-item"><div class="marquee-item-icon" style="background:rgba(231,76,60,0.1);color:#e74c3c;">J</div><span>JoyStore</span></div>
+            <div class="marquee-item"><div class="marquee-item-icon" style="background:rgba(46,204,113,0.1);color:#2ecc71;">K</div><span>KayaInsaat</span></div>
+            <div class="marquee-item"><div class="marquee-item-icon" style="background:rgba(155,89,182,0.1);color:#9b59b6;">L</div><span>LuxBoutique</span></div>
+            <!-- duplicates for seamless loop -->
+            <div class="marquee-item"><div class="marquee-item-icon" style="background:rgba(230,57,70,0.1);color:#e63946;">A</div><span>nrus Tech</span></div>
+            <div class="marquee-item"><div class="marquee-item-icon" style="background:rgba(67,97,238,0.1);color:#4361ee;">B</div><span>BeeSoft</span></div>
+            <div class="marquee-item"><div class="marquee-item-icon" style="background:rgba(46,204,113,0.1);color:#2ecc71;">C</div><span>CasaModern</span></div>
+            <div class="marquee-item"><div class="marquee-item-icon" style="background:rgba(255,107,53,0.1);color:#ff6b35;">D</div><span>DigiMark</span></div>
+            <div class="marquee-item"><div class="marquee-item-icon" style="background:rgba(155,89,182,0.1);color:#9b59b6;">E</div><span>EuroGida</span></div>
+            <div class="marquee-item"><div class="marquee-item-icon" style="background:rgba(241,196,15,0.1);color:#f1c40f;">F</div><span>FreshCo</span></div>
+            <div class="marquee-item"><div class="marquee-item-icon" style="background:rgba(26,188,156,0.1);color:#1abc9c;">G</div><span>GreenLife</span></div>
+            <div class="marquee-item"><div class="marquee-item-icon" style="background:rgba(230,57,70,0.1);color:#e63946;">H</div><span>HizliYemek</span></div>
+            <div class="marquee-item"><div class="marquee-item-icon" style="background:rgba(52,152,219,0.1);color:#3498db;">I</div><span>Intellect</span></div>
+            <div class="marquee-item"><div class="marquee-item-icon" style="background:rgba(231,76,60,0.1);color:#e74c3c;">J</div><span>JoyStore</span></div>
+            <div class="marquee-item"><div class="marquee-item-icon" style="background:rgba(46,204,113,0.1);color:#2ecc71;">K</div><span>KayaInsaat</span></div>
+            <div class="marquee-item"><div class="marquee-item-icon" style="background:rgba(155,89,182,0.1);color:#9b59b6;">L</div><span>LuxBoutique</span></div>
+        </div>
+    </div>
+
+    <!-- ILETISIM -->
+    <section class="section" id="iletisim">
+        <div class="section-header reveal">
+            <span class="section-tag">Iletisim</span>
+            <div class="section-divider"></div>
+            <h2 class="section-title">Projenizi Konuselim</h2>
+            <p class="section-desc">Hayalinizdeki projeyi hayata gecirmek icin bize ulasin.</p>
+        </div>
+        <div class="contact-wrapper">
+            <div class="contact-info reveal-left">
+                <h3>Bize Ulasin</h3>
+                <p>Hangi hizmeti almak isterseniz isteyin, size en uygun cozumu birlikte bulalim.</p>
+                <ul class="contact-details">
+                    <li>
+                        <div class="contact-icon-box">
+                            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <div>
+                            <p class="label">Adres</p>
+                            <p class="value">Istanbul, Turkiye</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="contact-icon-box">
+                            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </div>
+                        <div>
+                            <p class="label">Telefon</p>
+                            <p class="value">+90 (555) 123 45 67</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="contact-icon-box">
+                            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        </div>
+                        <div>
+                            <p class="label">E-posta</p>
+                            <p class="value">info@tormedia.com</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="contact-icon-box">
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        </div>
+                        <div>
+                            <p class="label">Calisma Saatleri</p>
+                            <p class="value">Pazartesi - Cumartesi: 09:00 - 18:00</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <form class="contact-form reveal-right" id="contactForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Ad Soyad</label>
+                        <input type="text" id="formName" placeholder="Adiniz Soyadiniz" required>
+                    </div>
+                    <div class="form-group">
+                        <label>E-posta</label>
+                        <input type="email" id="formEmail" placeholder="ornek@email.com">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Telefon</label>
+                        <input type="tel" id="formPhone" placeholder="+90 (5XX) XXX XX XX">
+                    </div>
+                    <div class="form-group">
+                        <label>Hizmet</label>
+                        <select id="formService" required>
+                            <option value="">Hizmet Secin</option>
+                            <option>Video & Reklam Cekimi</option>
+                            <option>Sosyal Medya Yonetimi</option>
+                            <option>Logo & Grafik Tasarim</option>
+                            <option>Web Sitesi Tasarimi</option>
+                            <option>Fotograf Cekimi</option>
+                            <option>Diger</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Mesajiniz</label>
+                    <textarea id="formMessage" placeholder="Projeniz hakkinda detay paylasin..."></textarea>
+                </div>
+                <button type="submit" class="form-submit" id="formSubmitBtn">Teklif Iste</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="#" class="logo">Tor<span>Media</span></a>
+                <p>Profesyonel medya ve reklam hizmetleriyle markanizi dijital dunyada one cikariyoruz.</p>
+                <div class="social-links">
+                    <a href="#" title="Instagram">IG</a>
+                    <a href="#" title="YouTube">YT</a>
+                    <a href="#" title="TikTok">TK</a>
+                    <a href="#" title="LinkedIn">IN</a>
+                    <a href="#" title="Twitter/X">X</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Hizmetler</h4>
+                <ul>
+                    <li><a href="#hizmetler">Video Cekimi</a></li>
+                    <li><a href="#hizmetler">Sosyal Medya</a></li>
+                    <li><a href="#hizmetler">Grafik Tasarim</a></li>
+                    <li><a href="#hizmetler">Web Tasarim</a></li>
+                    <li><a href="#hizmetler">Fotografcilik</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Paketler</h4>
+                <ul>
+                    <li><a href="#paketler">Starter</a></li>
+                    <li><a href="#paketler">Basic</a></li>
+                    <li><a href="#paketler">Standard</a></li>
+                    <li><a href="#paketler">Professional</a></li>
+                    <li><a href="#paketler">Premium</a></li>
+                    <li><a href="#paketler">Enterprise</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Sirket</h4>
+                <ul>
+                    <li><a href="#">Hakkimizda</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#iletisim">Iletisim</a></li>
+                    <li><a href="#">Gizlilik Politikasi</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 TorMedia. Tum haklari saklidir.</p>
+        </div>
+    </footer>
+
+    <!-- FLOATING WHATSAPP -->
+    <a href="https://wa.me/905551234567?text=Merhaba%2C%20TorMedia%20hakkinda%20bilgi%20almak%20istiyorum." target="_blank" class="whatsapp-float" title="WhatsApp ile Iletisime Gecin">
+        <span class="wa-pulse"></span>
+        <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+    </a>
+
+    <!-- MODAL -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal()">X</button>
+            <div class="modal-icon-box">
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <h2 id="modalTitle">Talebiniz Alindi!</h2>
+            <p id="modalDesc">Paket seciminiz kaydedildi. En kisa surede sizinle iletisime gececegiz.</p>
+            <button class="btn-primary" onclick="closeModal()" style="margin-top: 1rem;">Tamam</button>
+        </div>
+    </div>
+
+    <!-- CANLI DESTEK -->
+    <div class="live-support" id="liveSupport">
+        <div class="live-support-menu" id="liveSupportMenu">
+            <a href="https://wa.me/905551234567" target="_blank" class="live-support-item">
+                <span>WhatsApp ile Gorusun</span>
+                <div class="lsi-icon" style="background:#25d366;">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                </div>
+            </a>
+            <a href="https://t.me/tormedia" target="_blank" class="live-support-item">
+                <span>Telegram ile Gorusun</span>
+                <div class="lsi-icon" style="background:#0088cc;">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                </div>
+            </a>
+            <a href="tel:+905551234567" class="live-support-item">
+                <span>Bizi Arayin</span>
+                <div class="lsi-icon" style="background:var(--primary);">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </div>
+            </a>
+        </div>
+        <button class="live-support-main" id="liveSupportBtn">
+            <span class="pulse-ring"></span>
+            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </button>
+    </div>
+
+    <!--
+    ================================================================
+    TELEGRAM BOT AYARLARI
+    ================================================================
+    Asagidaki iki degeri kendi Telegram Bot bilgilerinizle degistirin:
+    1. BOT_TOKEN  -> BotFather'dan alinan token
+    2. CHAT_ID    -> Bildirim gonderilecek kullanici/grup ID'si
+    ================================================================
+    -->
+    <script>
+        const TELEGRAM_BOT_TOKEN = 'BOT_TOKENINIZI_BURAYA_YAZIN';
+        const TELEGRAM_CHAT_ID = 'CHAT_ID_BURAYA_YAZIN';
+
+        // ============ PRELOADER ============
+        (function() {
+            const bar = document.getElementById('preloaderBar');
+            const percent = document.getElementById('preloaderPercent');
+            const preloader = document.getElementById('preloader');
+            let p = 0;
+            const interval = setInterval(() => {
+                p += Math.random() * 15 + 5;
+                if (p >= 100) {
+                    p = 100;
+                    clearInterval(interval);
+                    setTimeout(() => { preloader.classList.add('hidden'); }, 400);
+                }
+                percent.textContent = Math.floor(p) + '%';
+            }, 120);
+        })();
+
+        // ============ SCROLL PROGRESS ============
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = (scrollTop / docHeight) * 100;
+            document.getElementById('scrollProgress').style.width = progress + '%';
+        });
+
+        // ============ PARTICLES ============
+        (function() {
+            const canvas = document.getElementById('particles-canvas');
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            let w, h;
+            let mouse = { x: null, y: null };
+
+            function resize() {
+                w = canvas.width = canvas.offsetWidth;
+                h = canvas.height = canvas.offsetHeight;
+            }
+
+            resize();
+            window.addEventListener('resize', resize);
+
+            canvas.parentElement.addEventListener('mousemove', (e) => {
+                const rect = canvas.getBoundingClientRect();
+                mouse.x = e.clientX - rect.left;
+                mouse.y = e.clientY - rect.top;
+            });
+
+            canvas.parentElement.addEventListener('mouseleave', () => {
+                mouse.x = null;
+                mouse.y = null;
+            });
+
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * w;
+                    this.y = Math.random() * h;
+                    this.size = Math.random() * 2 + 0.5;
+                    this.speedX = (Math.random() - 0.5) * 0.5;
+                    this.speedY = (Math.random() - 0.5) * 0.5;
+                    this.opacity = Math.random() * 0.5 + 0.1;
+                }
+
+                update() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+
+                    if (this.x > w) this.x = 0;
+                    if (this.x < 0) this.x = w;
+                    if (this.y > h) this.y = 0;
+                    if (this.y < 0) this.y = h;
+
+                    if (mouse.x !== null) {
+                        const dx = mouse.x - this.x;
+                        const dy = mouse.y - this.y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < 120) {
+                            this.x -= dx * 0.01;
+                            this.y -= dy * 0.01;
+                        }
+                    }
+                }
+
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(230, 57, 70, ${this.opacity})`;
+                    ctx.fill();
+                }
+            }
+
+            function initParticles() {
+                particles = [];
+                const count = Math.min(80, Math.floor((w * h) / 12000));
+                for (let i = 0; i < count; i++) {
+                    particles.push(new Particle());
+                }
+            }
+
+            function connectParticles() {
+                for (let i = 0; i < particles.length; i++) {
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const dx = particles[i].x - particles[j].x;
+                        const dy = particles[i].y - particles[j].y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < 140) {
+                            ctx.beginPath();
+                            ctx.strokeStyle = `rgba(230, 57, 70, ${0.08 * (1 - dist / 140)})`;
+                            ctx.lineWidth = 0.5;
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+            }
+
+            function animateParticles() {
+                ctx.clearRect(0, 0, w, h);
+                particles.forEach(p => { p.update(); p.draw(); });
+                connectParticles();
+                requestAnimationFrame(animateParticles);
+            }
+
+            initParticles();
+            animateParticles();
+        })();
+
+        // ============ 3D TILT EFFECT ============
+        (function() {
+            const tiltCards = document.querySelectorAll('.service-card, .package-card');
+
+            tiltCards.forEach(card => {
+                card.classList.add('tilt-card');
+
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = ((y - centerY) / centerY) * -8;
+                    const rotateY = ((x - centerX) / centerX) * 8;
+
+                    card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'perspective(800px) rotateX(0) rotateY(0) translateY(0)';
+                    card.style.transition = 'transform 0.5s ease';
+                });
+
+                card.addEventListener('mouseenter', () => {
+                    card.style.transition = 'transform 0.1s ease';
+                });
+            });
+        })();
+
+        // NAVBAR SCROLL
+        window.addEventListener('scroll', () => {
+            document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // HAMBURGER
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // PACKAGE FILTER
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const packageCards = document.querySelectorAll('.package-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.dataset.filter;
+
+                packageCards.forEach(card => {
+                    if (filter === 'all' || card.dataset.category.includes(filter)) {
+                        card.style.display = 'block';
+                        setTimeout(() => { card.style.opacity = '1'; card.style.transform = 'translateY(0)'; }, 50);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                        setTimeout(() => { card.style.display = 'none'; }, 300);
+                    }
+                });
+            });
+        });
+
+        // TELEGRAM GONDER
+        function sendTelegram(message) {
+            if (TELEGRAM_BOT_TOKEN === 'BOT_TOKENINIZI_BURAYA_YAZIN') {
+                console.log('Telegram gonderildi (simulasyon):', message);
+                return;
+            }
+
+            const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+            fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: TELEGRAM_CHAT_ID,
+                    text: message,
+                    parse_mode: 'HTML'
+                })
+            }).then(r => r.json()).then(data => {
+                console.log('Telegram gonderildi:', data);
+            }).catch(err => {
+                console.error('Telegram hatasi:', err);
+            });
+        }
+
+        // MODAL
+        function openModal(title, desc) {
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalDesc').textContent = desc;
+            document.getElementById('modalOverlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('modalOverlay').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('modalOverlay').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) closeModal();
+        });
+
+        // PAKET BUTON TIKLAMA -> WHATSAPP
+        const WHATSAPP_NUMBER = '905551234567';
+        document.querySelectorAll('.package-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const pkgName = btn.dataset.pkg;
+                const msg = encodeURIComponent('Merhaba, ' + pkgName + ' paketi hakkinda bilgi almak istiyorum. Detayli gorusmek icin musait misiniz?');
+                window.open('https://wa.me/' + WHATSAPP_NUMBER + '?text=' + msg, '_blank');
+            });
+        });
+
+        // ILETISIM FORMU -> TELEGRAM
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById('formName').value;
+            const email = document.getElementById('formEmail').value || 'Belirtilmedi';
+            const phone = document.getElementById('formPhone').value || 'Belirtilmedi';
+            const service = document.getElementById('formService').value;
+            const message = document.getElementById('formMessage').value || 'Mesaj yok';
+
+            openModal('Mesajiniz Gonderildi!', 'Basariyla gonderildi! En kisa surede sizinle iletisime gececegiz.');
+
+            sendTelegram(
+                '<b>YENI TEKLIF TALEBI</b>\n\n' +
+                '<b>Ad Soyad:</b> ' + name + '\n' +
+                '<b>E-posta:</b> ' + email + '\n' +
+                '<b>Telefon:</b> ' + phone + '\n' +
+                '<b>Hizmet:</b> ' + service + '\n' +
+                '<b>Mesaj:</b> ' + message + '\n\n' +
+                '<b>Tarih:</b> ' + new Date().toLocaleString('tr-TR')
+            );
+
+            e.target.reset();
+        });
+
+        // SCROLL REVEAL
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
+            revealObserver.observe(el);
+        });
+
+        // COUNTER ANIMATION
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = parseInt(entry.target.textContent);
+                    const suffix = entry.target.textContent.replace(/[0-9]/g, '');
+                    let current = 0;
+                    const increment = target / 60;
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= target) { current = target; clearInterval(timer); }
+                        entry.target.textContent = Math.floor(current) + suffix;
+                    }, 30);
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.stat h3').forEach(counter => counterObserver.observe(counter));
+
+        // ============ THEME SWITCHER ============
+        (function() {
+            const toggle = document.getElementById('themeToggle');
+            const saved = localStorage.getItem('tormedia-theme');
+            if (saved === 'light') {
+                document.body.classList.add('light');
+                toggle.textContent = 'LT';
+            }
+
+            toggle.addEventListener('click', () => {
+                document.body.classList.toggle('light');
+                const isLight = document.body.classList.contains('light');
+                toggle.textContent = isLight ? 'LT' : 'DM';
+                localStorage.setItem('tormedia-theme', isLight ? 'light' : 'dark');
+            });
+        })();
+
+        // ============ RECOMMENDED SLIDER ============
+        (function() {
+            const track = document.getElementById('sliderTrack');
+            const dots = document.querySelectorAll('.slider-dot');
+            const prevBtn = document.getElementById('sliderPrev');
+            const nextBtn = document.getElementById('sliderNext');
+            let current = 0;
+            const total = 3;
+            let autoSlide;
+
+            function goTo(index) {
+                if (index < 0) index = total - 1;
+                if (index >= total) index = 0;
+                current = index;
+                track.style.transform = `translateX(-${current * 100}%)`;
+                dots.forEach((d, i) => d.classList.toggle('active', i === current));
+            }
+
+            prevBtn.addEventListener('click', () => { goTo(current - 1); resetAuto(); });
+            nextBtn.addEventListener('click', () => { goTo(current + 1); resetAuto(); });
+            dots.forEach(dot => {
+                dot.addEventListener('click', () => { goTo(parseInt(dot.dataset.index)); resetAuto(); });
+            });
+
+            function resetAuto() {
+                clearInterval(autoSlide);
+                autoSlide = setInterval(() => goTo(current + 1), 5000);
+            }
+
+            resetAuto();
+        })();
+
+        // ============ LIVE SUPPORT TOGGLE ============
+        (function() {
+            const btn = document.getElementById('liveSupportBtn');
+            const menu = document.getElementById('liveSupportMenu');
+
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('active');
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('#liveSupport')) {
+                    menu.classList.remove('active');
+                }
+            });
+        })();
+
+        // ============ COUNTDOWN TIMER ============
+        (function() {
+            // Kampanya bitis tarihi - burayı değiştir (YYYY, MM-1, DD, HH, MM, SS)
+            const endDate = new Date(2026, 8, 30, 23, 59, 59).getTime();
+
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const diff = endDate - now;
+
+                if (diff <= 0) {
+                    document.getElementById('cdDays').textContent = '00';
+                    document.getElementById('cdHours').textContent = '00';
+                    document.getElementById('cdMinutes').textContent = '00';
+                    document.getElementById('cdSeconds').textContent = '00';
+                    return;
+                }
+
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                document.getElementById('cdDays').textContent = String(days).padStart(2, '0');
+                document.getElementById('cdHours').textContent = String(hours).padStart(2, '0');
+                document.getElementById('cdMinutes').textContent = String(minutes).padStart(2, '0');
+                document.getElementById('cdSeconds').textContent = String(seconds).padStart(2, '0');
+            }
+
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        })();
+
+        // ============ FAQ ACCORDION ============
+        (function() {
+            document.querySelectorAll('.faq-question').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const item = btn.closest('.faq-item');
+                    const wasActive = item.classList.contains('active');
+
+                    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+
+                    if (!wasActive) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+        })();
+
+        // ============ LANGUAGE SWITCHER ============
+        (function() {
+            const langBtn = document.getElementById('langToggle');
+            let currentLang = localStorage.getItem('tormedia-lang') || 'tr';
+
+            const trTexts = {
+                heroTag: 'Yeni Sezon 2026 Kampanyasi Aktif',
+                heroTitle1: 'Markanizi ',
+                heroTitle2: 'Dijital Dunyada',
+                heroTitle3: ' One Cikarin',
+                heroDesc: 'Profesyonel reklam cekimleri, sosyal medya yonetimi ve yaratici tasarim hizmetleriyle markanizi bir ust seviyeye tasiyoruz.',
+                heroBtn1: 'Paketleri Incele',
+                heroBtn2: 'Projelerimiz',
+                hizmetlerTag: 'Hizmetlerimiz',
+                hizmetlerTitle: 'Yaratici Cozumler Sunuyoruz',
+                hizmetlerDesc: 'Dijital dunyada parlamasi icin ihtiyaciniz olan tum hizmetleri tek cati altinda topladik.',
+                paketlerTag: 'Fiyatlandirma',
+                paketlerTitle: 'Ihtiyaciniza Uygun Paketi Secin',
+                paketlerDesc: 'Her butceye ve ihtiyaca uygun esnek paket seceneklerimizle yaninizdayiz.',
+                sssTag: 'SSS',
+                sssTitle: 'Sik Sorulan Sorular',
+                sssDesc: 'Merak ettiginiz her seyin cevabi burada.',
+                iletisimTag: 'Iletisim',
+                iletisimTitle: 'Projenizi Konuselim',
+                iletisimDesc: 'Hayalinizdeki projeyi hayata gecirmek icin bize ulasin.',
+                hemenBasla: 'Hemen Basla',
+                iletisimeGec: 'Iletisime Gec',
+                teklifAl: 'Teklif Al',
+                formAdSoyad: 'Ad Soyad',
+                formEposta: 'E-posta',
+                formTelefon: 'Telefon',
+                formHizmet: 'Hizmet',
+                formHizmetSec: 'Hizmet Secin',
+                formMesaj: 'Mesajiniz',
+                formMesajPh: 'Projeniz hakkinda detay paylasin...',
+                formGonder: 'Teklif Iste',
+                countdownLabel: 'Kampanya Sona Eriyor',
+                countdownTitle: 'Yeni Sezon Indiriminden Yararlanin',
+                cdGun: 'Gun', cdSaat: 'Saat', cdDakika: 'Dakika', cdSaniye: 'Saniye'
+            };
+
+            const enTexts = {
+                heroTag: 'New Season 2026 Campaign Active',
+                heroTitle1: 'Make Your Brand ',
+                heroTitle2: 'Stand Out',
+                heroTitle3: ' in the Digital World',
+                heroDesc: 'We take your brand to the next level with professional advertising shoots, social media management and creative design services.',
+                heroBtn1: 'View Packages',
+                heroBtn2: 'Our Projects',
+                hizmetlerTag: 'Our Services',
+                hizmetlerTitle: 'We Offer Creative Solutions',
+                hizmetlerDesc: 'We have gathered all the services you need to shine in the digital world under one roof.',
+                paketlerTag: 'Pricing',
+                paketlerTitle: 'Choose the Package That Suits Your Needs',
+                paketlerDesc: 'We are here with flexible package options suitable for every budget and need.',
+                sssTag: 'FAQ',
+                sssTitle: 'Frequently Asked Questions',
+                sssDesc: 'All the answers you are looking for are here.',
+                iletisimTag: 'Contact',
+                iletisimTitle: "Let's Talk About Your Project",
+                iletisimDesc: 'Get in touch to bring your dream project to life.',
+                hemenBasla: 'Get Started',
+                iletisimeGec: 'Contact Us',
+                teklifAl: 'Get Offer',
+                formAdSoyad: 'Full Name',
+                formEposta: 'E-mail',
+                formTelefon: 'Phone',
+                formHizmet: 'Service',
+                formHizmetSec: 'Select Service',
+                formMesaj: 'Your Message',
+                formMesajPh: 'Share details about your project...',
+                formGonder: 'Request Offer',
+                countdownLabel: 'Campaign Ending Soon',
+                countdownTitle: 'Take Advantage of New Season Discount',
+                cdGun: 'Days', cdSaat: 'Hours', cdDakika: 'Minutes', cdSaniye: 'Seconds'
+            };
+
+            function applyLang(lang) {
+                const t = lang === 'en' ? enTexts : trTexts;
+                langBtn.textContent = lang === 'tr' ? 'EN' : 'TR';
+
+                // data-tr / data-en attribute'lu elemanlari guncelle
+                document.querySelectorAll('[data-tr]').forEach(el => {
+                    const key = lang === 'en' ? el.dataset.en : el.dataset.tr;
+                    if (key) el.textContent = key;
+                });
+
+                // Hero
+                const heroBadge = document.querySelector('.hero-badge');
+                if (heroBadge) heroBadge.textContent = t.heroTag;
+                const heroH1 = document.querySelector('.hero h1');
+                if (heroH1) heroH1.innerHTML = t.heroTitle1 + '<span class="highlight">' + t.heroTitle2 + '</span>' + t.heroTitle3;
+                const heroP = document.querySelector('.hero > .hero-content > p');
+                if (heroP) heroP.textContent = t.heroDesc;
+                const heroBtns = document.querySelectorAll('.hero-buttons .btn-primary, .hero-buttons .btn-secondary');
+                if (heroBtns[0]) heroBtns[0].textContent = t.heroBtn1;
+                if (heroBtns[1]) heroBtns[1].textContent = t.heroBtn2;
+
+                // Section headers (data-tr/data-en ile zaten guncelleniyor)
+
+                // Package buttons
+                document.querySelectorAll('.package-btn').forEach(btn => {
+                    const currentText = btn.textContent.trim();
+                    if (currentText === 'Hemen Basla' || currentText === 'Get Started') btn.textContent = t.hemenBasla;
+                    else if (currentText === 'Iletisime Gec' || currentText === 'Contact Us') btn.textContent = t.iletisimeGec;
+                });
+
+                // Slider Teklif Al buttons
+                document.querySelectorAll('.slider-slide .btn-primary').forEach(btn => {
+                    if (btn.textContent.trim() === 'Teklif Al' || btn.textContent.trim() === 'Get Offer') {
+                        btn.textContent = t.teklifAl;
+                    }
+                });
+
+                // Form labels
+                const formGroups = document.querySelectorAll('#contactForm .form-group label');
+                if (formGroups[0]) formGroups[0].textContent = t.formAdSoyad;
+                if (formGroups[1]) formGroups[1].textContent = t.formEposta;
+                if (formGroups[2]) formGroups[2].textContent = t.formTelefon;
+                if (formGroups[3]) formGroups[3].textContent = t.formHizmet;
+                if (formGroups[4]) formGroups[4].textContent = t.formMesaj;
+
+                // Form placeholders
+                const formName = document.getElementById('formName');
+                if (formName) formName.placeholder = lang === 'en' ? 'Your Full Name' : 'Adiniz Soyadiniz';
+                const formEmail = document.getElementById('formEmail');
+                if (formEmail) formEmail.placeholder = lang === 'en' ? 'example@email.com' : 'ornek@email.com';
+                const formPhone = document.getElementById('formPhone');
+                if (formPhone) formPhone.placeholder = lang === 'en' ? '+90 (5XX) XXX XX XX' : '+90 (5XX) XXX XX XX';
+                const formMsg = document.getElementById('formMessage');
+                if (formMsg) formMsg.placeholder = t.formMesajPh;
+
+                // Submit button
+                const submitBtn = document.getElementById('formSubmitBtn');
+                if (submitBtn) submitBtn.textContent = t.formGonder;
+
+                // Countdown labels
+                document.querySelector('.countdown-label').textContent = t.countdownLabel;
+                document.querySelector('.countdown-title').textContent = t.countdownTitle;
+
+                localStorage.setItem('tormedia-lang', lang);
+            }
+
+            // Sayfa yuklendiginde dili uygula
+            applyLang(currentLang);
+
+            langBtn.addEventListener('click', () => {
+                currentLang = currentLang === 'tr' ? 'en' : 'tr';
+                applyLang(currentLang);
+            });
+        })();
+    </script>
+</body>
+</html>
